@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-    entry: ["./client/main.js"],
+    entry: ["./client_site/main.js"],
     output: {
         path: __dirname + '/public/build/',
         publicPath: "build/",
@@ -51,12 +51,14 @@ module.exports = {
                 loader: "json-loader"
             },
 
-             
+          
             
             
         ]
-       
+  
+    
        
     }
-     
+    
+             
 }
