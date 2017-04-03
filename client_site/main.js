@@ -1,8 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Doctorcomp from "./components/Doctorcomp.jsx"
+import App from "./components/App.jsx"
+
+
+
 
 ReactDOM.render(
-      <Doctorcomp />,
+    
+       <App />,
       document.getElementById('table')
 );
