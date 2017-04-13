@@ -1,9 +1,9 @@
 import mongoose from"mongoose";
 mongoose.Promise = Promise;
 
-import '../models/doctors';
+import '../models/admin';
 import {dbUri} from '../../etc/config.json';
-const doctor=mongoose.model('doctor');
+const admin=mongoose.model('admin');
 
 export function setUpConnection()
 { 
@@ -11,5 +11,5 @@ export function setUpConnection()
 }
 
 export function listNodes(){
-    return doctor.find();
+    return admin.find();
 }

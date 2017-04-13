@@ -1,12 +1,16 @@
 import React from"react"
-
-const Home =()=>{
-
-    return(
+import Doctor from "../Doctors/Doctors.jsx"
+const Home =React.createClass({
+render()
+{    return(
 <div>
-    <h1>Home</h1>
+   {
+    this.props.home.map(ad=>
+    <h1 key={ad._id}>{ad.name}{ad.password}</h1>)
+   }
 </div>
     );
-};
+}
+});
 
 export default Home;

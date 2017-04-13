@@ -9,8 +9,9 @@ const app=express();
 app.use(bodyparser.json());
 app.use(cors({origin:'*'}));
 
-app.get('/doctors', (req, res) => {
+app.get('/admin', (req, res) => {
     db.listNodes().then(data=>res.send(data));
+    
 });
 
 const server = app.listen(serverPort, () => {

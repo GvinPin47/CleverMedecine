@@ -5,9 +5,12 @@ const Links =()=>{
 
     return(
 <nav>
+    
    <Link to='/'>Home</Link>
-   <Link to='/administrators'>Administrators</Link>
+  
+       <Link to='/administrators'>Admin</Link>
    <Link to='/doctors'>Doctors</Link>
+    
 </nav>
     );
 };

@@ -4,7 +4,7 @@ const Doctors =()=>{
 
     return(
 <div>
-    <h1>Doctors</h1>
+    <h1>{this.props.nam}}</h1>
 </div>
     );
 };
