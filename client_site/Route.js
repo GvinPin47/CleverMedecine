@@ -4,7 +4,7 @@ import App from "./components/App.jsx"
 import MainPage from "./components/MainPage/MainPage.jsx"
 import {browserHistory} from 'react-router-dom'
 import Profile from './components/Profile/Profile.jsx'
-
+import MenuComponent from './components/MenuComponent/MenuComponent.jsx'
  const Routes =React.createClass({
 
     render()
@@ -17,9 +17,9 @@ return(
                 <Switch>
                 <Route exact path='/'  component={App}></Route>  
                 <Route path='/mainPage'  component={MainPage}>
-                <Switch>
+                
                     <Route path ='profile' component={Profile}/>
-                    </Switch>
+                    
                     </Route>
                 </Switch>            
             </div>

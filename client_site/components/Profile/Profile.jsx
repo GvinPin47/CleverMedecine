@@ -5,10 +5,10 @@ import "./Profile.less"
 const Profile=(props)=>{
 
     return(
-        <div className='Profile'>
+        <div >
             {console.log('smth')}
-                  <h1>Hi i am your profile</h1> 
-                  {props.children}
+                  <p>Hi i am your profile</p> 
+                  
             </div>
     )
 }
