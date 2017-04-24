@@ -1,3 +1,21 @@
  babel-node --inspect  --debug-brk server/appServer.js  //debug in server
 
  ctrl+alt+k => ctrl+p >bookmarks  //bookmarkplaugin
+
+
+ <Home userAuthH={this.userAuthHandle}  ></Home>
+
+       
+              {
+          this.state.user.token
+          }
+
+        </div>
+
+
+
+         <Link to ='/login'>
+         </Link>
+
+         <Route path='/' component={App}></Route>
+          <Route exact={true} path='/' component={App}> </Route>

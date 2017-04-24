@@ -1,49 +1,72 @@
 import React,{Component} from "react"
-import {BrowserRouter as Router,Route,Link} from "react-router-dom"
+import {BrowserRouter as Router,Route,Link,browserHistory,Redirect,match} from "react-router-dom"
 
-/*import Administrators from "./Administrators/Administrators.jsx"
-import Doctors from "./Doctors/Doctors.jsx"
 import Home from "./Home/Home.jsx"
-import Links from "./Links.jsx"*/
-import Home from "./Home/Home.jsx"
-
 import AdminStore from "../stores/AdminStore.js"
 import AdminActions from "../actions/AdminActions.js"
+import createReactClass from "create-react-class"
+
+import getMuiTheme from'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+
 
 function getStateFromFlux(){
     
     return{
         isLoading: AdminStore.isLoading(),
-        adminList: AdminStore.getAdminList()
+        user: AdminStore.getUser(),
     };
     
 }
-
-const App =React.createClass({
+var x
+ var token
+const App =createReactClass({
+    
     getInitialState(){
     return getStateFromFlux();
  },
   componentWillMount(){              // Вызывается один раз, на клиенте и сервере, непосредственно перед началом рендеринга.
-     AdminActions.loadAdmin();
- },
+},
+ 
+
   componentDidMount(){          //Вызывается один раз, только на клиенте (не на сервере), сразу же после того, как происходит инициализация рендеринга.
        AdminStore.addChangeListener(this._onChange);
     },
-    componentWillUnMount(){   //Вызывается непосредственно перед тем, как компонент демонтируется из DOM.
+    componentWillUnMount(){  //Вызывается непосредственно перед тем, как компонент демонтируется из DOM.
        AdminStore.removeChangeListener(this._onChange);
+    },
+    
+    userAuthHandle(data){
+      AdminActions.AuthUser(data);
        
+    },
+    authcheck(){
+        if(x!=undefined){console.log('login')
+         return token=(
+             <Redirect to='/mainPage' push> </Redirect>
+         )
+         
+     }
     },
     
 render(){
+    x=this.state.user.message
 return (
    <div>
-    <Home home={this.state.adminList}></Home>
-        </div>
+       <MuiThemeProvider >
+    <Home userAuthH={this.userAuthHandle}></Home>
+    </MuiThemeProvider>
+       {this.authcheck()}
+            <div ref='myref'>
+       {this.state.user.message=undefined}</div>
+                  </div>
 );
 },
 _onChange(){
 
+if(this.refs.myref)
 this.setState(getStateFromFlux());
     }
 });
-export default App;
+export default App
