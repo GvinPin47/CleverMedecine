@@ -19,3 +19,8 @@
 
          <Route path='/' component={App}></Route>
           <Route exact={true} path='/' component={App}> </Route>
+
+
+
+          
+           

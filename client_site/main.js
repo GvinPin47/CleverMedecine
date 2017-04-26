@@ -7,10 +7,10 @@ import MainPage from "./components/MainPage/MainPage.jsx"
 
 
 ReactDOM.render(
-      <div>
+     /* <div>
        <Routes />
-       </div>,
+       </div>,*/
 
-/*<MainPage/>,*/
+<MainPage/>,
       document.getElementById('table')
 );

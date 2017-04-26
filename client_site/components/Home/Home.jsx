@@ -46,7 +46,7 @@ render()
     
   <TextField className='TextField'  id='name'type='text' placeholder='Введите имя' value={this.state.value} onChange={this.handleNameChange}></TextField>
    <TextField className='TextField' id='password' type='text' placeholder='Введите пароль' value={this.state.value} onChange={this.handlePasswordChange}></TextField>
-   <RaisedButton className='Button' label='Ввод' onTouchTap={this.handleUserAdd}></RaisedButton>
+   <RaisedButton className='Button' backgroundColor='#FFA726' label='Ввод' onTouchTap={this.handleUserAdd}></RaisedButton>
 </Paper>
    
     );

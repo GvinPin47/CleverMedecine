@@ -16,14 +16,14 @@ return(
             <div>
                 <Switch>
                 <Route exact path='/'  component={App}></Route>  
-                <Route path='/mainPage'  component={MainPage}>
+                <Route path='/mainPage'  component={MainPage}/>
                 
-                    <Route path ='profile' component={Profile}/>
                     
-                    </Route>
+                    
+                    
                 </Switch>            
             </div>
-            </Router>,
+            </Router>
 </div>)
 }
 })

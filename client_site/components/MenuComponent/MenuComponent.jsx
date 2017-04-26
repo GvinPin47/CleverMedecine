@@ -51,7 +51,7 @@ render(){
     <MenuItem primaryText='Диагнозы' leftIcon={<Diognis/>}/>
 </Menu>
 </Paper>
-<div className='Profile' >
+<div>
     {this.state.showProfile ? <Profile /> : undefined}
 </div>
     </div>)
