@@ -30,28 +30,30 @@ const App =createReactClass({
 },
  
 
-  componentDidMount(){          //Вызывается один раз, только на клиенте (не на сервере), сразу же после того, как происходит инициализация рендеринга.
+  componentDidMount(){ 
+              //Вызывается один раз, только на клиенте (не на сервере), сразу же после того, как происходит инициализация рендеринга.
        AdminStore.addChangeListener(this._onChange);
     },
-    componentWillUnMount(){  //Вызывается непосредственно перед тем, как компонент демонтируется из DOM.
+    componentWillUnMount(){
+       //Вызывается непосредственно перед тем, как компонент демонтируется из DOM.
        AdminStore.removeChangeListener(this._onChange);
     },
     
     userAuthHandle(data){
+      localStorage.setItem('token', this.state.user.message) 
       AdminActions.AuthUser(data);
        
     },
     authcheck(){
-        if(x!=undefined){console.log('login')
+        
+        if(localStorage.getItem('token')!=undefined){console.log('login')
          return token=(
              <Redirect to='/mainPage' push> </Redirect>
-         )
-         
-     }
+             )}else{console.log('unlogin'); return localStorage.removeItem('token')} 
     },
     
 render(){
-    x=this.state.user.message
+   
 return (
    <div>
        <MuiThemeProvider >

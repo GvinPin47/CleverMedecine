@@ -5,9 +5,8 @@ import AppConstants from '../constants/Constants';
 
 const CHANGE_EVENT = 'change';
 
-let _adminlist = [];
+let _profileList=[];
 let _authuser=[];
-
 let _loadingError = null;
 let _isLoading = true;
 
@@ -21,10 +20,19 @@ function formatNote(admin) {
     };
 
 }
+function formatProfile(profile){
+     
+    return{
+        Firstname:profile.Firstname,
+        Lastname:profile.Lastname,
+        Email:profile.Email,
+        Phone:profile.Phone,
+        Sex:profile.Sex
+    }
+}
 function UserAuth(user){
 
     return{
-        
         message:user.message,
         token:user.token
     }
@@ -33,12 +41,11 @@ const TasksStore = Object.assign({}, EventEmitter.prototype, {
     isLoading() {
         return _isLoading;
     },
-
-    getAdminList() {
-        return _adminlist;
-    },
+   getProfile(){
+      
+        return _profileList[1]
+   },
     getUser(){
-        
         return _authuser;
     },
     emitChange() {
@@ -64,39 +71,36 @@ AppDispatcher.register(function(action) {
         }
          case AppConstants.LOAD_USER_SUCCESS: {
             _isLoading = false;
-            
-            //_authuser = action.user.map( UserAuth );
             _authuser=action.user;
             _loadingError = null;
-
+             
             TasksStore.emitChange();
             break;
         }
         
-        case AppConstants.LOAD_NOTES_REQUEST: {
-            _isLoading = true;
-
-            TasksStore.emitChange();
-            break;
-        }
-
-        case AppConstants.LOAD_NOTES_SUCCESS: {
-            _isLoading = false;
-            _adminlist = action.admin.map( formatNote );
-            
-            _loadingError = null;
-
-            TasksStore.emitChange();
-            break;
-        }
-
-        case AppConstants.LOAD_NOTES_FAIL: {
+         case AppConstants.LOAD_USER_FAIL: {
             _loadingError = action.error;
 
             TasksStore.emitChange();
             break;
         }
-         case AppConstants.LOAD_USER_FAIL: {
+
+         case AppConstants.LOAD_PROFILE_REQUEST:{
+            _isLoading=true;
+
+            TasksStore.emitChange();
+            break;
+        }
+         case AppConstants.LOAD_PROFILE_SUCCESS: {
+            _isLoading = false;
+            _profileList=action.profile.map(formatProfile);
+           
+            _loadingError = null;
+            TasksStore.emitChange();
+            break;
+        }
+        
+         case AppConstants.LOAD_PROFILE_FAIL: {
             _loadingError = action.error;
 
             TasksStore.emitChange();

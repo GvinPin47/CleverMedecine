@@ -3,13 +3,15 @@ import axios from 'axios';
 var loc='http://localhost:3000';
 
 export default {
-    listAdmin() {
-        return axios.get('http://localhost:3000/user');
+    ListProfile() {
+        return axios.get('http://localhost:3000/profile');
+        
     },
     authUser(data)
     {
         return axios.post('http://localhost:3000/login',data)
     }
+
 
     
 }

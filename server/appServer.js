@@ -75,6 +75,10 @@ app.get('/user', (req, res) => {
     db.listNodes().then(data=>res.send(data));
 });
 
+app.get('/profile', (req, res) => {
+  db.Profilelist().then(data=>res.send(data));
+})
+
 const server = app.listen(serverPort, () => {
     console.log(`Server is up and running on port ${serverPort}`);
 });
