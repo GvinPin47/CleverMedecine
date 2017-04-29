@@ -23,6 +23,12 @@ const ProfileActions = {
                 error: err
             })
         )
+    },
+
+    ChangeProfile(data){
+        api.ChangeProfile(data)
+        .then(()=>this.LoadProfile()).catch(err=>console.error(err))
+
     }
 }
 

@@ -2,9 +2,16 @@ import mongoose from"mongoose";
 mongoose.Promise = Promise;
 
 import '../models/admin';
+import '../models/profile';
 import {dbUri} from '../../etc/config.json';
+
+
 const admin=mongoose.model('admin');
-var id='590173169da9d71e53962c58'
+const profile=mongoose.model('profile')
+
+
+
+var _id='590173169da9d71e53962c58' //Profile
 
 export function setUpConnection()
 { 
@@ -17,5 +24,8 @@ export function listNodes(){
 
 export function Profilelist()
 {
-    return admin.find();
+    return profile.find();
+}
+export function ProfileChange(data){
+    return profile.findById(_id).update(data)
 }

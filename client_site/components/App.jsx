@@ -19,7 +19,6 @@ function getStateFromFlux(){
     };
     
 }
-var x
  var token
 const App =createReactClass({
     

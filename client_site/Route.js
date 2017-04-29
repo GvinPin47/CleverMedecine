@@ -17,10 +17,6 @@ return(
                 <Switch>
                 <Route exact path='/'  component={App}></Route>  
                 <Route path='/mainPage'  component={MainPage}/>
-                
-                    
-                    
-                    
                 </Switch>            
             </div>
             </Router>

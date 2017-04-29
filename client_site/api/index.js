@@ -10,6 +10,9 @@ export default {
     authUser(data)
     {
         return axios.post('http://localhost:3000/login',data)
+    },
+    ChangeProfile(data){
+            return axios.post('http://localhost:3000/Changeprofile',data)
     }
 
 

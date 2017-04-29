@@ -3,7 +3,9 @@ import CreateReactClass from 'create-react-class'
 import{ List,ListItem} from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import Paper from 'material-ui/Paper'
+import './ProfileLes.less'
 let lister=[]
+
 
 const ListProfile=CreateReactClass({
 

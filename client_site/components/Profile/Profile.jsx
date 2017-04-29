@@ -12,9 +12,9 @@ import "./Profile.less"
 import ProfileActions from "/Project's/CleverMedecine0.0.1/client_site/actions/ProfileActions.js"
 import AdminStore from "/Project's/CleverMedecine0.0.1/client_site/stores/AdminStore.js"
 import ListProfile from './ListProfile.jsx'
+import DialogComp from './DialogComp.jsx'
 
-let a=[]
-let b;
+
 const Profile=createReactClass({
 
 getInitialState(){
@@ -24,6 +24,9 @@ return{
     open:false}
 
 },
+handleProfileChange(Data){
+      ProfileActions.ChangeProfile(Data);
+    },
 componentWillMount(){              // Вызывается один раз, на клиенте и сервере, непосредственно перед началом рендеринга.
      ProfileActions.LoadProfile();
  },
@@ -39,54 +42,20 @@ componentDidMount(){          //Вызывается один раз, тольк
      if(this.refs.myref){   
 this.setState({isLoading:AdminStore.isLoading()});
 this.setState({profile:AdminStore.getProfile()})}
-
     },
 
-handleOpen(){
-     
-this.setState({open:true})
-},
-handleClose(){
-this.setState({open:false})
-},
+
 handlePrimary(){
  if(this.state.profile!=undefined){return this.state.profile.Firstname}},
 
-render(){
-    const actions =[
-<FlatButton
-    label='Выйти'
-    primary={true}
-    onTouchTap={this.handleClose}
-/>,
-<FlatButton
-    label='Изменить'
-    primary={true}
-    disabled={false}
-    onTouchTap={this.handleClose}
-/>,
-    ]
-    
+render(){ 
     return(
         <div>
                <Paper className='Profile' zDepth={3} >
                    <div ref='myref'>
                 <ListProfile list={this.state.profile}/>
                 </div>
-        <RaisedButton className='Rbutton' label='Редактировать'  backgroundColor='#FFA726' onTouchTap={this.handleOpen} ></RaisedButton>
-        <Dialog 
-                title="Редактирование Данных"
-                actions={actions}
-                modal={true}
-                open={this.state.open}
-        >
-        <div className='Dialog'>
-        <TextField id='1' className='TextField' defaultValue='Имя будет здесь'/>
-        <TextField id='2' defaultValue='Фамилия будет здесь'/>
-        <TextField id='3' className="TextField" defaultValue='Почта будет здесь'/>
-        <TextField id='4' defaultValue='Телефон будет здесь'/>
-        </div>
-        </Dialog>
+       <DialogComp onProfileChange={this.handleProfileChange}/>
         <div></div>
             </Paper> 
             </div>
