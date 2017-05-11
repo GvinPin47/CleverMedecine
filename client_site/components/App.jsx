@@ -17,15 +17,16 @@ function getStateFromFlux(){
         isLoading: AdminStore.isLoading(),
         user: AdminStore.getUser(),
     };
-    
 }
  var token
+ var a=0
 const App =createReactClass({
     
     getInitialState(){
     return getStateFromFlux();
  },
   componentWillMount(){              // Вызывается один раз, на клиенте и сервере, непосредственно перед началом рендеринга.
+
 },
  
 
@@ -39,16 +40,14 @@ const App =createReactClass({
     },
     
     userAuthHandle(data){
-      localStorage.setItem('token', this.state.user.message) 
+       localStorage.setItem('tokenlog', this.state.user.message) 
       AdminActions.AuthUser(data);
-       
     },
     authcheck(){
-        
-        if(localStorage.getItem('token')!=undefined){console.log('login')
+        if(this.state.user.message!=undefined){console.log('login')
          return token=(
              <Redirect to='/mainPage' push> </Redirect>
-             )}else{console.log('unlogin'); return localStorage.removeItem('token')} 
+             )}else{console.log('unlogin'); return localStorage.removeItem('tokenlog')} 
     },
     
 render(){
@@ -65,9 +64,10 @@ return (
 );
 },
 _onChange(){
-
-if(this.refs.myref)
+if(this.refs.myref){
 this.setState(getStateFromFlux());
-    }
+}
+}
+    
 });
 export default App

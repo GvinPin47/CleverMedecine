@@ -84,6 +84,10 @@ app.post('/Changeprofile',(req,res)=>{
 db.ProfileChange(req.body).then(data=>res.send(data))
 });
 
+app.get('/LpuAdmin',(req,res)=>{
+  db.AdminList().then(data=>res.send(data))
+})
+
 const server = app.listen(serverPort, () => {
     console.log(`Server is up and running on port ${serverPort}`);
 });

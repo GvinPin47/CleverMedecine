@@ -45,8 +45,6 @@ this.setState({profile:AdminStore.getProfile()})}
     },
 
 
-handlePrimary(){
- if(this.state.profile!=undefined){return this.state.profile.Firstname}},
 
 render(){ 
     return(

@@ -7,27 +7,31 @@ const CHANGE_EVENT = 'change';
 
 let _profileList=[];
 let _authuser=[];
+let _listLpuAdmin=[];
 let _loadingError = null;
 let _isLoading = true;
 
-function formatNote(admin) {
-   
-    return {
-        _id: admin._id,
-        name: admin.name,
-        password: admin.password,
 
-    };
-
-}
 function formatProfile(profile){
-     
     return{
         Firstname:profile.Firstname,
         Lastname:profile.Lastname,
         Email:profile.Email,
         Phone:profile.Phone,
         Sex:profile.Sex
+    }
+}
+function formatListAdmin(lpuadmin){
+    
+    return{
+        _id:lpuadmin._id,
+        Number:lpuadmin.Number,
+        LpuAdminData:{
+           _id:lpuadmin._id,
+           Name:lpuadmin.Name,
+           Lastname:lpuadmin.Lastname,
+           Lpu:lpuadmin.Lpu
+        }
     }
 }
 function UserAuth(user){
@@ -41,12 +45,17 @@ const TasksStore = Object.assign({}, EventEmitter.prototype, {
     isLoading() {
         return _isLoading;
     },
+    getLpuAdminData(){
+        console.log(_listLpuAdmin)
+        return _listLpuAdmin
+    },
    getProfile(){
-      
+       
         return _profileList[1]
    },
     getUser(){
-        return _authuser;
+        
+        return _authuser
     },
     emitChange() {
         this.emit(CHANGE_EVENT);
@@ -72,6 +81,7 @@ AppDispatcher.register(function(action) {
          case AppConstants.LOAD_USER_SUCCESS: {
             _isLoading = false;
             _authuser=action.user;
+            
             _loadingError = null;
              
             TasksStore.emitChange();
@@ -101,6 +111,28 @@ AppDispatcher.register(function(action) {
         }
         
          case AppConstants.LOAD_PROFILE_FAIL: {
+            _loadingError = action.error;
+
+            TasksStore.emitChange();
+            break;
+        }
+
+         case AppConstants.LOAD_ADMINLIST_REQUEST:{
+            _isLoading=true;
+
+            TasksStore.emitChange();
+            break;
+        }
+         case AppConstants.LOAD_ADMINLIST_SUCCESS: {
+            _isLoading = false;
+            _listLpuAdmin=action.lpuadmin
+            _loadingError = null;
+             
+            TasksStore.emitChange();
+            break;
+        }
+        
+         case AppConstants.LOAD_ADMINLIST_FAIL: {
             _loadingError = action.error;
 
             TasksStore.emitChange();

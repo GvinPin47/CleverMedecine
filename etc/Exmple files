@@ -24,3 +24,27 @@
 
           
            // db.Profilelist().then(data=>res.send(data));
+
+
+           db.Lpu_Admin.insert({_id: ObjectId("4d85c7039ab0fd70a117d734"), Number: '1', LpuAdminData: {Name: 'Володя', Lastname: 'Путин',Lpu:'АкваТэк', Lpu_Admin: ObjectId("4d85c7039ab0fd70a117d730")}})
+WriteResult({ "nInserted" : 1 })
+
+
+
+ <Paper className={this.state.Menu}>
+      
+<Menu>
+   <MenuItem></MenuItem>
+    <MenuItem primaryText='Профиль' leftIcon={<Person/>} onClick={this.toggleProfile}></MenuItem>
+    <Divider/>
+    <MenuItem primaryText='Администраторы' leftIcon={<RemoveRedEye/>} onClick={this.toggleAdmin}/>
+    <MenuItem primaryText='Врачи' leftIcon={<Doctor/>}/>
+    <MenuItem primaryText='Список Пациентов' leftIcon={<People/>}/>
+    <Divider/>
+    <MenuItem primaryText='Управление ЛПУ'leftIcon={<LPU/>}/>
+    <Divider/>
+    <MenuItem primaryText='Препараты' leftIcon={<Pills/>}/>
+    <MenuItem primaryText='Диагнозы' leftIcon={<Diognis/>}/>
+</Menu>
+
+</Paper>

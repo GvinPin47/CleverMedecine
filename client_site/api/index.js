@@ -13,8 +13,11 @@ export default {
     },
     ChangeProfile(data){
             return axios.post('http://localhost:3000/Changeprofile',data)
+    },
+
+    ListAdmin()
+    {
+        return axios.get('http://localhost:3000/LpuAdmin')
     }
-
-
     
 }

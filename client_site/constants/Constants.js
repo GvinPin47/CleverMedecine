@@ -8,4 +8,8 @@ export default keyMirror({
      LOAD_PROFILE_REQUEST:null,
     LOAD_PROFILE_SUCCESS: null,
     LOAD_PROFILE_FAIL: null,
+
+    LOAD_ADMINLIST_REQUEST:null,
+    LOAD_ADMINLIST_SUCCESS: null,
+    LOAD_ADMINLIST_FAIL: null,
 });

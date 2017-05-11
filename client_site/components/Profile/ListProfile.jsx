@@ -23,7 +23,7 @@ const ListProfile=CreateReactClass({
                    <ListItem  primaryText={lister.Firstname} secondaryText='Профиль' leftAvatar={<Avatar src='http://media.cackle.me/a6b9b753d4930d8d680207d455e7a6ff.jpg' />}/>
                    </List>
                    </Paper>
-                    <Paper className='List' zDepth={2} >
+                    <Paper className='List' zDepth={2}>
                 <List>
                     <ListItem primaryText={lister.Firstname} secondaryText='Имя'/>
                     <ListItem primaryText={lister.Lastname} secondaryText='Фамилия'/>
